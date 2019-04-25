@@ -5,25 +5,11 @@
 
 Topics covered:
 
-* Intro
-    * About me
-    * About the institute
-    * Presentation outline
-* Conceptual intro
-    * What is etl
-    * Emphasising the breadth of ETL with all acronyms 
-    * Talking about the downsides of etl
-    * Introducing streaming 
-    * Talk about both backends being the same from high level
-    * Push for unified interface 
-    * Talk about all the tools that are available for bath + streams
-    * Talk about one not being better than the other, and how tools have relevant usecases
-    * Talking about Machine Learning
-    * Machine Learning pipelines
-    * How ML pipelines are different to traditional ETL flows (and general software)
+* What is ETL (+ Tools)
+* What is data streaming (+ tools)
+* What are the challenges of ML in context
 * Hands on demo
-    * Introducing the challenge
-    * Talking about the setup with dockercompose
+    * Data pipelines for NLP
 
 ## Running Presentation
 

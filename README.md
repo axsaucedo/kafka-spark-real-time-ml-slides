@@ -1,26 +1,9 @@
 # Real time machine learning pipelines with Kafka and Spark Streaming
 
-## [View Live Presentation](https://axsauze.github.io/industrial-machine-learning/#/)
-
-Presentation briefly introducing deep learning and how to apply a specific subset of deep learning, recurrent neural networks, to solve real world problems.
-
-#### Code Repo: [https://github.com/axsauze/crypto-ml](https://github.com/axsauze/crypto-ml/)
+## [View Live Presentation](https://axsauze.github.io/kafka-spark-real-time-ml-slides
+/#/)
 
 Topics covered:
-
-* Overview of presentation
-* Machine learning expectation and reality
-* Challenges of large scale, industry-ready machine learning
-* Building the machine learning models
-    * Starting out: Simple models
-    * Next level: Deep Learning
-* Stepping up our deployment
-    * Containers
-* Serving for the masses
-    * Using celery and rabbitmq 
-* Taking it to the professional levels
-    * Stepping up the game with Kubernetes
-
 
 * Intro
     * About me

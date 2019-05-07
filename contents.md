@@ -185,7 +185,7 @@ http://github.com/axsauze/kafka-spark-real-time-ml-slides
 <div style="width: 33%; float: left">
 	<h2><a id="ETL_Tools_0"></a>ETL</h2>
 	<ul>
-	<li>Oozie (+ Spark)</li>
+	<li>Oozie</li>
 	<li>Airflow (+engine)</li>
 	</ul>
 </div>
@@ -203,6 +203,42 @@ http://github.com/axsauze/kafka-spark-real-time-ml-slides
 	<li>Data Warehouse</li>
 	</ul>
 </div>
+
+
+[NEXT]
+<!-- .slide: data-background="images/polygon-dark.jpg" class="background" style="color: white" -->
+
+### Spark Batch Analysis
+
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+from pyspark.sql.types import IntegerType
+from pyspark.sql.functions import udf, col
+
+df = (spark.read.format("com.databricks.spark.csv")
+        .option("quoteMode","ALL")
+        .option("multiLine","true")
+        .option("wholeFile","true")
+        .option("header", "true")
+        .option("inferSchema","true")
+        .load("/machinelearning/reddit_200k.csv"))
+
+df_input.select("body", "removed", "score").show()
+
+</code></pre>
+
+<pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em">
+> +--------------------+-------+-----+ 
+> | body               |removed|score| 
+> +--------------------+-------+-----+ 
+> |I have always bee...| False | 2   | 
+> |As an ECE, my fin...| True  | 2   |
+> +--------------------+-------+-----+ 
+
+</code></pre>
+
+
 
 
 [NEXT SECTION]
@@ -234,17 +270,61 @@ http://github.com/axsauze/kafka-spark-real-time-ml-slides
 
 #### The massive push to converge the APIs for streams and batch processing (i.e. Spark, Flink, BEAM, etc)
 
+[NEXT]
+<!-- .slide: data-background="images/black-blue-waves.jpg" class="background" -->
+
+# Stream Processing Concepts
+
+[NEXT]
+<!-- .slide: data-background="images/black-blue-waves.jpg" class="background" -->
+
+# Windows
+
+![classification_large](images/stream-windows.jpg)
+
+
+[NEXT]
+<!-- .slide: data-background="images/black-blue-waves.jpg" class="background" -->
+
+# Checkpointing
+![classification_large](images/stream-checkpoints.png)
+
+
+[NEXT]
+<!-- .slide: data-background="images/black-blue-waves.jpg" class="background" -->
+
+![classification_large](images/stream-watermarks.jpg)
+
+
 
 [NEXT]
 <!-- .slide: data-background="images/black-blue-waves.jpg" class="background" style="color: white"-->
 
 ## Thoughts on popular tools
 
-* Spark Streaming
 * Flink
 * Kafka Streams
 * Faust (Python)
 * Apache Beam
+
+
+[NEXT]
+<!-- .slide: data-background="images/black-blue-waves.jpg" class="background" style="color: white"-->
+
+## Spark Streaming
+
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+ssc = StreamingContext(sc, batchDuration=2)
+
+# ...
+
+stream = KafkaUtils.createDirectStream(
+    ssc, 
+    [REDDIT_TOPIC], 
+    {"metadata.broker.list": KAFKA_BROKERS})
+
+</code></pre>
 
 
 [NEXT SECTION]
@@ -366,6 +446,32 @@ $ cat data-output.csv
 <br>
 ### bit.ly/awesome-mlops
 
+
+
+[NEXT]
+<!-- .slide: data-background="images/black-blue-waves.jpg" class="background" style="color: white"-->
+
+## Spark ML (+ SpaCy) 
+
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+pipeline = Pipeline(
+    stages=[
+        SpacyTokenizer(
+            inputCol="body", outputCol="body_tokenized"), 
+        NGram(
+            inputCol='body_tokenized', outputCol='body_ngram', n=3), 
+        CountVectorizer(
+            inputCol='body_ngram', outputCol='body_tf'), 
+        IDF(
+            inputCol='body_tf', outputCol='body_tfidf'),
+        LogisticRegression(
+            featuresCol='body_tfidf', ...)])
+    
+</code></pre>
+
+
+
 [NEXT SECTION]
 <!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white"  data-transition="slide-in fade-out" -->
 # 4) Putting it all together
@@ -440,7 +546,7 @@ Almost, we still need to know where the model came from!
 [NEXT]
 <!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
 
-### Let's dive on the code!
+### Let's dive into the code!
 
 
 [NEXT SECTION]

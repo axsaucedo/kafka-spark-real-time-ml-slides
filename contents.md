@@ -1,7 +1,7 @@
 <!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
 
-<h2>Real time machine learning</h2>
-<h4>Streaming data pipelines with kafka and spark</h4>
+<h2>Industry Ready Pipelines</h2>
+<h4>Real time ML pipelines with Kafka, Spark and SpaCy</h4>
 <p>
   <br />
   <br />
@@ -15,8 +15,8 @@
 [NEXT]
 <!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
 
-<h2>Real time machine learning</h2>
-<h4>Streaming data pipelines with kafka and spark</h4>
+<h2>Industry Ready Pipelines</h2>
+<h4>Real time ML pipelines with Kafka, Spark and SpaCy</h4>
 
 <table class="bio-table">
   <tr>
@@ -119,8 +119,6 @@
 
 [NEXT]
 <!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
-### Code (TBP) 
-https://github.com/axsauze/kafka-spark-real-time-ml
 
 ### Slides
 http://github.com/axsauze/kafka-spark-real-time-ml-slides
@@ -531,22 +529,82 @@ pipeline = Pipeline(
 [NEXT]
 <!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
 
-# Are we done?
-
-Almost, we still need to know where the model came from!
+## What do we need before all of that?
 
 
 [NEXT]
 <!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
 
-### We build a model through Zeppelin interface using spark + reddit data
+# The ML Model
+
+We build a model through Zeppelin notebook using Spark ML & SpaCy on historical reddit data
 
 ![full_width](images/reddit-architecture-zeppelin.png)
 
 [NEXT]
 <!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
 
-### Let's dive into the code!
+#### Taking the same approach
+
+![classification_large](images/mltrain.png)
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
+
+#### Our ML Pipeline
+
+![classification_large](images/spacypipe.jpg)
+
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
+
+# Ready for inference
+
+![classification_large](images/mlall.png)
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white"  data-transition="fade-in fade-out" -->
+
+### Creating a stream of reddit comments
+
+![full_width](images/reddit-architecture-partial-2.png)
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white"  data-transition="fade-in fade-out" -->
+
+### Stram processor subscribing to topic
+
+![full_width](images/reddit-architecture-partial-3.png)
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white"  data-transition="fade-in fade-out" -->
+
+### Processing ML prediction 
+
+![full_width](images/reddit-architecture-partial-4.png)
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white"  data-transition="fade-in fade-out" -->
+
+### Pushing results of classification
+
+![full_width](images/reddit-architecture-partial-5.png)
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" data-transition="fade-in fade-out"  -->
+
+### Push flagged results to alert
+
+![full_width](images/reddit-architecture-partial-6.png)
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white"  data-transition="fade-in slide-out" -->
+
+### Use elastic sink to push to elastic
+
+![full_width](images/reddit-architecture-full-no-zeppelin.png)
+
 
 
 [NEXT SECTION]
@@ -568,8 +626,6 @@ Almost, we still need to know where the model came from!
 
 [NEXT]
 <!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
-### Code (TBP) 
-https://github.com/axsauze/kafka-spark-real-time-ml
 
 ### Slides
 http://github.com/axsauze/kafka-spark-real-time-ml-slides
@@ -578,8 +634,8 @@ http://github.com/axsauze/kafka-spark-real-time-ml-slides
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background" -->
 
-<h2>Real time machine learning</h2>
-<h4>Streaming data pipelines with kafka and spark</h4>
+<h2>Industry Ready Pipelines</h2>
+<h4>Real time ML pipelines with Kafka, Spark and SpaCy</h4>
 
 <table class="bio-table">
   <tr>
